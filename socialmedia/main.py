@@ -7,7 +7,7 @@ post_table = {}
 
 @app.post("/post", response_model=UserPost)
 async def create_post(data: UserPostIn):
-    res = data.dict()
+    res = data.model_dump()
     last_record_id = len(post_table)
     new_post = {**res, "id": last_record_id}
     post_table[last_record_id] = new_post
